@@ -12,9 +12,9 @@ public class ResponseHandler {
     private static Logger logger = LogManager.getLogger(ResponseHandler.class);
 
     private final MessageSender sender;
-    private DBManager dbManager;
+    private IDBManager dbManager;
 
-    public ResponseHandler(MessageSender sender, DBManager dbManager) {
+    public ResponseHandler(MessageSender sender, IDBManager dbManager) {
         this.sender = sender;
         this.dbManager = dbManager;
     }
@@ -33,8 +33,7 @@ public class ResponseHandler {
         try {
             UUID groupId = UUID.fromString(arg);
 
-            dbManager.addGroupToUser(chatId, groupId);
-            dbManager.addUserToGroup(groupId, chatId);
+            dbManager.addUserToGroup(chatId, groupId);
 
             printMessage(chatId, Constants.REPLY_START_BY_LINK.replace(Constants.PEOPLE_COUNT, String.valueOf(dbManager.getGroupUsers(groupId).size())));
             replyToStart(chatId);
@@ -111,8 +110,7 @@ public class ResponseHandler {
                 printMessage(chatId, Constants.REPLY_REGISTRATION_ADDITIONAL);
                 printMessage(chatId, Constants.REPLY_INVITE_LINK + newGroupId.toString());
 
-                dbManager.addGroupToUser(chatId, newGroupId);
-                dbManager.addUserToGroup(newGroupId, chatId);
+                dbManager.addUserToGroup(chatId, newGroupId);
             }
 
             replyToStart(chatId);
@@ -152,8 +150,7 @@ public class ResponseHandler {
                     UUID groupId = UUID.fromString(firstArg);
 
                     if (dbManager.checkGroupExists(groupId)) {
-                        dbManager.addGroupToUser(chatId, groupId);
-                        dbManager.addUserToGroup(groupId, chatId);
+                        dbManager.addUserToGroup(chatId, groupId);
                         printMessage(chatId, Constants.REPLY_ADDED_TO_GROUP);
                         replyToStart(chatId);
                     } else {

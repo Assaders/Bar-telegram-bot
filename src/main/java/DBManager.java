@@ -5,11 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class DBManager {
+public class DBManager implements IDBManager {
     private final Map<Long, Constants.State> chatStates;
     private final Map<UUID, List<Long>> groupUsers;
     private final Map<Long, List<UUID>> userGroups;
-
 
     public DBManager(DBContext db) {
         chatStates = db.getMap(Constants.CHAT_STATES);
@@ -17,7 +16,7 @@ public class DBManager {
         groupUsers = db.getMap(Constants.GROUP_USERS);
     }
 
-    public void addGroupToUser(Long userId, UUID groupId) {
+    public void addUserToGroup(Long userId, UUID groupId) {
         List<UUID> groups = userGroups.get(userId);
         if (groups == null) {
             groups = new ArrayList<>();
@@ -25,9 +24,7 @@ public class DBManager {
         groups.add(groupId);
 
         userGroups.put(userId, groups);
-    }
 
-    public void addUserToGroup(UUID groupId, Long userId) {
         List<Long> users = groupUsers.get(groupId);
         if (users == null) {
             users = new ArrayList<>();
