@@ -1,3 +1,5 @@
+package com.assader.bots.BarInvitationBot;
+
 import org.telegram.abilitybots.api.db.DBContext;
 
 import java.util.ArrayList;
@@ -5,15 +7,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import static com.assader.bots.BarInvitationBot.Constants.*;
+
 public class DBManager implements IDBManager {
-    private final Map<Long, Constants.State> chatStates;
+    private final Map<Long, State> chatStates;
     private final Map<UUID, List<Long>> groupUsers;
     private final Map<Long, List<UUID>> userGroups;
 
     public DBManager(DBContext db) {
-        chatStates = db.getMap(Constants.CHAT_STATES);
-        userGroups = db.getMap(Constants.USER_GROUPS);
-        groupUsers = db.getMap(Constants.GROUP_USERS);
+        chatStates = db.getMap(CHAT_STATES);
+        userGroups = db.getMap(USER_GROUPS);
+        groupUsers = db.getMap(GROUP_USERS);
     }
 
     public void addUserToGroup(Long userId, UUID groupId) {
@@ -34,16 +38,16 @@ public class DBManager implements IDBManager {
         groupUsers.put(groupId, users);
     }
 
-    public void setUserState(Long userId, Constants.State state) {
+    public void setUserState(Long userId, State state) {
         chatStates.put(userId, state);
     }
 
-    public Constants.State getUserState(Long userId) {
+    public State getUserState(Long userId) {
         return chatStates.get(userId);
     }
 
-    public boolean checkUserState(Long userId, Constants.State state) {
-        Constants.State userState = getUserState(userId);
+    public boolean checkUserState(Long userId, State state) {
+        State userState = getUserState(userId);
         return userState != null && userState.equals(state);
     }
 
@@ -62,7 +66,7 @@ public class DBManager implements IDBManager {
 
     public boolean checkUserGroupLimit(Long userId) {
         List<UUID> userGroups = getUserGroups(userId);
-        return userGroups != null && userGroups.size() >= Constants.GROUP_LIMIT;
+        return userGroups != null && userGroups.size() >= GROUP_LIMIT;
     }
 
     public void removeUserFromGroup(Long userId, UUID groupId) {

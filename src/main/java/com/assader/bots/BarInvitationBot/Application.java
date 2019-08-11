@@ -1,3 +1,5 @@
+package com.assader.bots.BarInvitationBot;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.telegram.telegrambots.ApiContextInitializer;
@@ -24,7 +26,7 @@ public class Application {
             // Register your newly created AbilityBot
             BarInvitationBot bot = new BarInvitationBot(botOptions);
             botsApi.registerBot(bot);
-            logger.info("BarInvitationBot registered!");
+            logger.info("com.assader.bots.BarInvitationBot.BarInvitationBot registered!");
 
         } catch (TelegramApiException e) {
             logger.error("Telegram api exception", e);

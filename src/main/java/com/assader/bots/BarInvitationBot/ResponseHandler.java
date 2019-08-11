@@ -1,3 +1,5 @@
+package com.assader.bots.BarInvitationBot;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.telegram.abilitybots.api.sender.MessageSender;

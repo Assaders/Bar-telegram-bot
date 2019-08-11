@@ -1,3 +1,5 @@
+package com.assader.bots.BarInvitationBot;
+
 import org.telegram.abilitybots.api.bot.AbilityBot;
 import org.telegram.abilitybots.api.objects.Ability;
 import org.telegram.abilitybots.api.objects.Flag;
@@ -7,6 +9,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 
 import java.util.function.Consumer;
 
+import static com.assader.bots.BarInvitationBot.Constants.*;
 import static org.telegram.abilitybots.api.objects.Locality.ALL;
 import static org.telegram.abilitybots.api.objects.Privacy.PUBLIC;
 import static org.telegram.abilitybots.api.util.AbilityUtils.getChatId;
@@ -17,21 +20,21 @@ public class BarInvitationBot extends AbilityBot {
     private final DBManager dbManager;
 
     public BarInvitationBot(DefaultBotOptions options) {
-        super(Constants.BOT_TOKEN, Constants.BOT_USERNAME, options);
+        super(BOT_TOKEN, BOT_USERNAME, options);
         dbManager = new DBManager(db);
         responseHandler = new ResponseHandler(sender, dbManager);
     }
 
     @Override
     public int creatorId() {
-        return Constants.CREATOR_ID;
+        return CREATOR_ID;
     }
 
     public Ability replyToStart() {
         return Ability
                 .builder()
                 .name("start")
-                .info(Constants.START_DESCRIPTION)
+                .info(START_DESCRIPTION)
                 .locality(ALL)
                 .privacy(PUBLIC)
                 .action(ctx -> {

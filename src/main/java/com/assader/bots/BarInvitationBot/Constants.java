@@ -1,3 +1,5 @@
+package com.assader.bots.BarInvitationBot;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,7 +14,7 @@ public abstract class Constants {
     /**
      * Init constants
      */
-    public static final String BOT_USERNAME = "BarInvitationBot";
+    public static final String BOT_USERNAME = "com.assader.bots.BarInvitationBot.BarInvitationBot";
     public static String BOT_TOKEN;
 
     static {
@@ -45,7 +47,7 @@ public abstract class Constants {
     public static final String REPLY_REGISTRATION = "Хорошо, вот идентификатор твоей группы! Отправь его своим друзьям, чтобы ты мог позвать иx в бар.";
     public static final String REPLY_REGISTRATION_ADDITIONAL = "Или отправь эту ссылку для более удобного присоединения друзей!";
     public static final String REPLY_START_BY_LINK = "Вы вступили в группу собутыльников по ссылке!\nЧеловек в группе: " + PEOPLE_COUNT + ".";
-    public static final String REPLY_INVITE_LINK = "http://t.me/BarInvitationBot?start=";
+    public static final String REPLY_INVITE_LINK = "http://t.me/com.assader.bots.BarInvitationBot.BarInvitationBot?start=";
     public static final String REPLY_GROUP_LIMIT = "Вы достигли лимита по группам (" + GROUP_COUNT + "). Чтобы создать новую группу, выйдите из одной из существующих.";
     public static final String REPLY_GROUP_REMOVED = "Группа успешно удалена!";
     public static final String REPLY_ADDED_TO_GROUP = "Вы успешно добавились в группу!";
