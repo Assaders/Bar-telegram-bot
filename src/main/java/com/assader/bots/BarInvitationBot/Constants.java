@@ -25,9 +25,9 @@ public abstract class Constants {
         }
     }
 
-    public static final String PROXY_HOST = "37.35.70.236";
-    public static final Integer PROXY_PORT = 9999;
-    public static final int CREATOR_ID = 367826221;
+    public static final String PROXY_HOST = ;
+    public static final Integer PROXY_PORT = ;
+    public static final int CREATOR_ID = ;
 
     /**
      * Replace constants
